@@ -1,9 +1,16 @@
 const saludo = document.getElementById("saludo")
-const calculador = document.getElementById("calculador")
-const listado = document.getElementById("listado")
+let calculador = document.getElementById("calculador")
+let listado = document.getElementById("listado")
 const nombre = prompt("Ingrese su nombre")
 const apellido = prompt("Ingrese su apellido")
-saludo.innerHTML = `<b>¡Hola, ${nombre} ${apellido}!</b>`
+saludo.innerHTML = `<b>¡Hola, bienvenido ${nombre} ${apellido}!</b>`
+
+calculador.addEventListener("click", () => {
+    calculadora()
+})
+listado.addEventListener("click", () => {
+    mostrarMenu()
+})
 
 function calculadora()
 {
@@ -67,63 +74,100 @@ function calculadora()
         alert(numero1/numero2)
     }
 }
+
 class Usuario{
-    constructor(nombre,apellido,edad,ciudad){
-        this.nombre=nombre
-        this.apellido=apellido
-        this.edad=edad
-        this.ciudad=ciudad
+    constructor(id,nombre,apellido,años,ciudad)
+    {
+        this.id=id;
+        this.nombre=nombre;
+        this.apellido=apellido;
+        this.años=años;
+        this.ciudad=ciudad;
     }
 }
 
-const usuario1 = new Usuario("Pietro", "Ochner", 21, "Agronomía");
-const usuario2 = new Usuario("Nehuen Ezequiel", "Morales", 21, "Villa Del Parque");
-const usuario3 = new Usuario("Noelia", "Di Matteo", 21, "Villa Lynch");
+const usuario1 = new Usuario(1, "Nehuen", "Gutierrez", 22, "CABA");
+const usuario2 = new Usuario(2, "Fiona", "Gancedo", 25, "Corrientes");
+const usuario3 = new Usuario(3, "Morena", "Nuñez", 21, "CABA");
+const usuario4 = new Usuario(4, "Aldana", "Morales", 28, "Mendoza");
+const usuario5 = new Usuario(5, "Martin", "Tomassoni", 32, "Mendoza");
+const usuario6 = new Usuario(6, "Pietro", "Ochner", 24, "CABA");
 
-function listadoUsuarios(){
+const usuarios = [usuario1,usuario2,usuario3, usuario4, usuario5, usuario6];
+console.log("INICIAL:", usuarios);
 
-let usuarios = [usuario1,usuario2,usuario3]
+function mostrarMenu()
+{
+   let opcion = 0;
+   
+   while(opcion!==6)
+   {
+       opcion = Number(prompt(`Seleccione una acción:
+                           1. Agregar Usuario
+                           2. Eliminar Usuario
+                           3. Modificar Usuario
+                           4. Listar usuarios
+                           5. Buscar Usuario
+                           6. Salir`));
 
-mostMenu()
-
-function mostMenu(){
-    let opcion = 0 
-    
-    while(opcion!==4) {
-    
-        opcion = Number(prompt(`Seleccione una opción:   1. Agregar Usuario
-                                    2. Listar Usuarios
-                                    3. Eliminar Usuario
-                                    4. Finalizar`))
-        switch(opcion){
-            case 1:{
-                agregarUsuario()
-                break
-            }
-            case 2:{
-                listarUsuarios()
-                break
-            }
-            case 3:{
-                eliminarUsuario()
-                break
-            }
-            case 4:{
+   switch(opcion)
+   {
+       case 1:
+       {
+           agregarUsuario();
+           break;
+       }
+       case 2: 
+       {
+           eliminarUsuario();
+       }
+       case 3: 
+       {
+           modificarUsuario();
+       }
+       case 4:
+       {
+           listarUsuarios();
+           break;
+       }
+       case 5:
+       {
+               buscarUsuario();
+               break;
+       }
+       case 6:
+       {
                 alert("MUCHAS GRACIAS")
-                break
-            }
-        } 
-    }
+                listarNombreMasApellido();
+                break;
+       }
+       default:{
+           alert("opcion inválida");
+           break;
+       }
+      
+   }
+
+   }
 }
 
-function agregarUsuario(){
-    let nombre = prompt("Ingrese su nombre")
-    let apellido = prompt("Ingrese su apellido")
-    let edad = prompt("Ingrese su edad")
-    let ciudad = prompt("Ingrese su ciudad")
-    let usuario = new Usuario(nombre, apellido, edad, ciudad)
-    usuarios.push(usuario)
+function agregarUsuario()
+{      
+    let id=1;
+    if(usuarios.length>0)
+    {
+       id=usuarios[usuarios.length-1].id+1;
+    }
+    
+    let nombre=prompt("ingrese un nombre");
+    let apellido = prompt("ingrese un apellido");
+    let años = Number(prompt("ingrese un años"));
+    let ciudad = prompt("ingrese un ciudad");
+    let usuario = new Usuario(id, nombre, apellido, años, ciudad);
+
+    usuarios.push(usuario);
 }
+
 
 function listarUsuarios()
 {
@@ -138,7 +182,7 @@ function listarUsuarios()
    
    usuarios.forEach((usuario)=>{
        const nodoli = document.createElement("li");
-       nodoli.innerHTML=`${usuario.nombre} ${usuario.apellido}`;
+       nodoli.innerHTML=`${usuario.id}, ${usuario.nombre} ${usuario.apellido}, ${usuario.años}, ${usuario.ciudad}`;
        miLista.appendChild(nodoli);
    });
 
@@ -146,21 +190,57 @@ function listarUsuarios()
 }
 
 function eliminarUsuario(){
-    let nombre = prompt("Ingrese nombre del usuario a eliminar")
 
-    let encontrado = usuarios.find((usuario)=>usuario.nombre===nombre)
+   let id= Number(prompt("Ingrese el id del usuario que quiere eliminar"));
 
-   if(!encontrado){
-       alert("Usuario no encontrado")
-   } else {
-       let index = usuarios.indexOf(encontrado)
-       usuarios.splice(index,1)
-       console.log("borrar usuarios")
+   let encontrado = usuarios.find((usuario)=>usuario.id===id);
+
+  if(!encontrado)
+  {
+      alert("Usuario no Encontrado");
+  }
+  else{
+
+       let index = usuarios.indexOf(encontrado);
+
+       usuarios.splice(index,1);
+
+       console.log("Borrar usuario");
+       console.log(usuarios);
+  }
+}
+
+function buscarUsuario()
+{
+   let nombre = prompt("Ingresa el nombre que quires buscar");
+
+   let encontrados = usuarios.filter((usuario)=>usuario.nombre.toLowerCase().indexOf(nombre.toLocaleLowerCase())!==-1);
+
+   console.log("BUCAR USUARIOS:", encontrados);
+
+}
+
+
+function modificarUsuario()
+{
+   let id= Number(prompt("Ingrese el id del usuario que quiere modificar"));
+
+   let existe = usuarios.some((usuario)=>usuario.id===id);
+
+   if(existe)
+   {
+       let encontrado = usuarios.find((usuario)=>usuario.id===id);
+       let nuevoNombre = prompt("Ingrese el nuevo nombre");
+       let nuevoApellido = prompt("Ingrese el nuevo apellido");
+
+       encontrado.nombre = nuevoNombre;
+       encontrado.apellido= nuevoApellido;
+
+       console.log("MODIFICACION")
        console.log(usuarios);
    }
-   
-    console.log("Se encontró para borrar", encontrado);
-}
-console.log("Estos son sus usuarios")
-console.log(usuarios);  
+   else
+   {
+     alert("Usuario no econtrado");
+   }
 }

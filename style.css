@@ -1,0 +1,21 @@
+*{
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+body{
+    background-color: black;
+}
+h1, p, ul{
+    color: white;
+    margin-top: 0.5rem;
+}
+button{
+    background-color: red;
+    color: white;
+    width: 15rem;
+    height: 2rem;
+    margin-top: 1rem;
+    border-radius: 1rem;
+    border: none;
+}
