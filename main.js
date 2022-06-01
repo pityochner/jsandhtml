@@ -1,9 +1,7 @@
 const saludo = document.getElementById("saludo")
 let calculador = document.getElementById("calculador")
 let listado = document.getElementById("listado")
-const nombre = prompt("Ingrese su nombre")
-const apellido = prompt("Ingrese su apellido")
-saludo.innerHTML = `<b>¡Hola, bienvenido ${nombre} ${apellido}!</b>`
+
 
 calculador.addEventListener("click", () => {
     calculadora()
@@ -12,38 +10,41 @@ listado.addEventListener("click", () => {
     mostrarMenu()
 })
 
+
+//calculadora
 function calculadora()
 {
-    while(calculadora!==5) {
-            
-        calculadora = Number(prompt(`Seleccione una opción:   1. Sumar
-                                        2. Restar
-                                        3. Multiplicar
-                                        4. Dividir
-                                        5. Finalizar`))
-        switch(calculadora){
-            case 1:{
-                sumar()
-                break
-            }
-            case 2:{
-                restar()
-                break
-            }
-            case 3:{
-                multiplicar()
-                break
-            }
-            case 4:{
-                dividir()
-                break
-            }
-            case 5:{
-                alert("MUCHAS GRACIAS")
-                break
-            }
-        } 
-    }
+    const suma = document.createElement("button")
+    document.body.appendChild(suma)
+    suma.innerHTML="SUMAR"
+    suma.classList.add("button2");
+    suma.addEventListener("click", () => {
+        sumar()
+    })
+
+    const resta = document.createElement("button")
+    document.body.appendChild(resta)
+    resta.innerHTML="RESTAR"
+    resta.classList.add("button2");
+    resta.addEventListener("click", () => {
+        restar()
+    })
+
+    const multiplica = document.createElement("button")
+    document.body.appendChild(multiplica)
+    multiplica.innerHTML="MULTIPLICAR"
+    multiplica.classList.add("button2");
+    multiplica.addEventListener("click", () => {
+        multiplicar()
+    })
+
+    const divide = document.createElement("button")
+    document.body.appendChild(divide)
+    divide.innerHTML="DIVIDIR"
+    divide.classList.add("button2");
+    divide.addEventListener("click", () => {
+        dividir()
+    })
 
     function sumar()
     {
@@ -75,6 +76,7 @@ function calculadora()
     }
 }
 
+//listado de usuarios
 class Usuario{
     constructor(id,nombre,apellido,años,ciudad)
     {
@@ -131,6 +133,7 @@ function mostrarMenu()
     });
 }
 
+//agregar usuario
 function agregarUsuario()
 {      
     let id=1;
@@ -149,7 +152,7 @@ function agregarUsuario()
     listarUsuarios()
 }
 
-
+//listar usuarios
 function listarUsuarios()
 {
    let miLista = document.querySelector("#listaUsuarios");
@@ -163,13 +166,14 @@ function listarUsuarios()
    
    usuarios.forEach((usuario)=>{
        const nodoli = document.createElement("li");
-       nodoli.innerHTML=`${usuario.id}, ${usuario.nombre} ${usuario.apellido}, ${usuario.años}, ${usuario.ciudad}`;
+       nodoli.innerHTML=`${usuario.id}, ${usuario.nombre} ${usuario.apellido}, ${usuario.años} años, ${usuario.ciudad}`;
        miLista.appendChild(nodoli);
    });
 
    document.body.appendChild(miLista);
 }
 
+//eliminar usuario
 function eliminarUsuario(){
 
    let id= Number(prompt("Ingrese el id del usuario que quiere eliminar"));
@@ -192,6 +196,7 @@ function eliminarUsuario(){
   listarUsuarios()
 }
 
+//modificar usuario
 function modificarUsuario()
 {
    let id= Number(prompt("Ingrese el id del usuario que quiere modificar"));
