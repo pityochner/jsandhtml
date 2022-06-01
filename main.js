@@ -98,57 +98,45 @@ console.log("INICIAL:", usuarios);
 
 function mostrarMenu()
 {
-   let opcion = 0;
-   
-   while(opcion!==6)
-   {
-       opcion = Number(prompt(`Seleccione una acción:
-                           1. Agregar Usuario
-                           2. Eliminar Usuario
-                           3. Modificar Usuario
-                           4. Listar usuarios
-                           5. Buscar Usuario
-                           6. Salir`));
+    const agreUsuario = document.createElement("button")
+    document.body.appendChild(agreUsuario)
+    agreUsuario.innerHTML="Agregar Usuario"
+    agreUsuario.classList.add("agreUsuario");
+    agreUsuario.addEventListener("click", () => {
+        agregarUsuario()
+    })
 
-   switch(opcion)
-   {
-       case 1:
-       {
-           agregarUsuario();
-           break;
-       }
-       case 2: 
-       {
-           eliminarUsuario();
-       }
-       case 3: 
-       {
-           modificarUsuario();
-       }
-       case 4:
-       {
-           listarUsuarios();
-           break;
-       }
-       case 5:
-       {
-               buscarUsuario();
-               break;
-       }
-       case 6:
-       {
-                alert("MUCHAS GRACIAS")
-                listarNombreMasApellido();
-                break;
-       }
-       default:{
-           alert("opcion inválida");
-           break;
-       }
-      
-   }
+    const elimUsuario = document.createElement("button")
+    document.body.appendChild(elimUsuario)
+    elimUsuario.innerHTML="Eliminar Usuario"
+    elimUsuario.classList.add("elimUsuario");
+    elimUsuario.addEventListener("click", () => {
+        eliminarUsuario()
+    })
 
-   }
+    const modiUsuario = document.createElement("button")
+    document.body.appendChild(modiUsuario)
+    modiUsuario.innerHTML="Modificar Usuario"
+    modiUsuario.classList.add("modiUsuario");
+    modiUsuario.addEventListener("click", () => {
+        modificarUsuario()
+    })
+
+    const listUsuario = document.createElement("button")
+    document.body.appendChild(listUsuario)
+    listUsuario.innerHTML="Listar Usuarios"
+    listUsuario.classList.add("listUsuario");
+    listUsuario.addEventListener("click", () => {
+        listarUsuarios()
+    })
+
+    const salir = document.createElement("button")
+    document.body.appendChild(salir)
+    salir.innerHTML="Salir"
+    salir.classList.add("salir");
+    salir.addEventListener("click", () => {
+        salir()
+    })
 }
 
 function agregarUsuario()
@@ -161,11 +149,12 @@ function agregarUsuario()
     
     let nombre=prompt("ingrese un nombre");
     let apellido = prompt("ingrese un apellido");
-    let años = Number(prompt("ingrese un años"));
+    let años = Number(prompt("ingrese su edad"));
     let ciudad = prompt("ingrese un ciudad");
     let usuario = new Usuario(id, nombre, apellido, años, ciudad);
 
     usuarios.push(usuario);
+    listarUsuarios()
 }
 
 
@@ -208,18 +197,8 @@ function eliminarUsuario(){
        console.log("Borrar usuario");
        console.log(usuarios);
   }
+  listarUsuarios()
 }
-
-function buscarUsuario()
-{
-   let nombre = prompt("Ingresa el nombre que quires buscar");
-
-   let encontrados = usuarios.filter((usuario)=>usuario.nombre.toLowerCase().indexOf(nombre.toLocaleLowerCase())!==-1);
-
-   console.log("BUCAR USUARIOS:", encontrados);
-
-}
-
 
 function modificarUsuario()
 {
@@ -232,9 +211,13 @@ function modificarUsuario()
        let encontrado = usuarios.find((usuario)=>usuario.id===id);
        let nuevoNombre = prompt("Ingrese el nuevo nombre");
        let nuevoApellido = prompt("Ingrese el nuevo apellido");
+       let nuevaEdad = prompt("Ingrese la nueva edad");
+       let nuevaCiudad = prompt("Ingrese la nueva ciudad");
 
        encontrado.nombre = nuevoNombre;
        encontrado.apellido= nuevoApellido;
+       encontrado.Edad = nuevaEdad;
+       encontrado.Ciudad = nuevaCiudad;
 
        console.log("MODIFICACION")
        console.log(usuarios);
@@ -243,4 +226,9 @@ function modificarUsuario()
    {
      alert("Usuario no econtrado");
    }
+   listarUsuarios()
+}
+
+function salir(){
+    alert("MUCHAS GRACIAS")
 }

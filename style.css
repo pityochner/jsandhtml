@@ -6,7 +6,7 @@
 body{
     background-color: black;
 }
-h1, p, ul{
+h1, p, ul, .nombre{
     color: white;
     margin-top: 0.5rem;
 }
@@ -18,4 +18,17 @@ button{
     margin-top: 1rem;
     border-radius: 1rem;
     border: none;
+    text-align: center;
+
+}
+
+.agreUsuario, .elimUsuario, .modiUsuario, .listUsuario, .salir{
+    background-color: green;
+    text-align: center;
+    color: white;
+    width: 7rem;
+    height: 2rem;
+    margin-top: 1rem;
+    margin-left: 1%;    
+    border-radius: 0.5rem;
 }
