@@ -101,7 +101,7 @@ function mostrarMenu()
     const agreUsuario = document.createElement("button")
     document.body.appendChild(agreUsuario)
     agreUsuario.innerHTML="Agregar Usuario"
-    agreUsuario.classList.add("agreUsuario");
+    agreUsuario.classList.add("button2");
     agreUsuario.addEventListener("click", () => {
         agregarUsuario()
     })
@@ -109,7 +109,7 @@ function mostrarMenu()
     const elimUsuario = document.createElement("button")
     document.body.appendChild(elimUsuario)
     elimUsuario.innerHTML="Eliminar Usuario"
-    elimUsuario.classList.add("elimUsuario");
+    elimUsuario.classList.add("button2");
     elimUsuario.addEventListener("click", () => {
         eliminarUsuario()
     })
@@ -117,7 +117,7 @@ function mostrarMenu()
     const modiUsuario = document.createElement("button")
     document.body.appendChild(modiUsuario)
     modiUsuario.innerHTML="Modificar Usuario"
-    modiUsuario.classList.add("modiUsuario");
+    modiUsuario.classList.add("button2");
     modiUsuario.addEventListener("click", () => {
         modificarUsuario()
     })
@@ -125,7 +125,7 @@ function mostrarMenu()
     const listUsuario = document.createElement("button")
     document.body.appendChild(listUsuario)
     listUsuario.innerHTML="Listar Usuarios"
-    listUsuario.classList.add("listUsuario");
+    listUsuario.classList.add("button2");
     listUsuario.addEventListener("click", () => {
       listarUsuarios();
     });

@@ -22,7 +22,7 @@ button{
 
 }
 
-.agreUsuario, .elimUsuario, .modiUsuario, .listUsuario, .salir{
+.button2{
     background-color: green;
     text-align: center;
     color: white;
