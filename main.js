@@ -90,7 +90,7 @@ const usuario1 = new Usuario(1, "Nehuen", "Gutierrez", 22, "CABA");
 const usuario2 = new Usuario(2, "Fiona", "Gancedo", 25, "Corrientes");
 const usuario3 = new Usuario(3, "Morena", "Nuñez", 21, "CABA");
 const usuario4 = new Usuario(4, "Aldana", "Morales", 28, "Mendoza");
-const usuario5 = new Usuario(5, "Martin", "Tomassoni", 32, "Mendoza");
+const usuario5 = new Usuario(5, "Alfonsina", "Diaz", 0, "CABA");
 const usuario6 = new Usuario(6, "Pietro", "Ochner", 24, "CABA");
 
 const usuarios = [usuario1,usuario2,usuario3, usuario4, usuario5, usuario6];
