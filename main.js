@@ -127,16 +127,8 @@ function mostrarMenu()
     listUsuario.innerHTML="Listar Usuarios"
     listUsuario.classList.add("listUsuario");
     listUsuario.addEventListener("click", () => {
-        listarUsuarios()
-    })
-
-    const salir = document.createElement("button")
-    document.body.appendChild(salir)
-    salir.innerHTML="Salir"
-    salir.classList.add("salir");
-    salir.addEventListener("click", () => {
-        salir()
-    })
+      listarUsuarios();
+    });
 }
 
 function agregarUsuario()
@@ -227,8 +219,4 @@ function modificarUsuario()
      alert("Usuario no econtrado");
    }
    listarUsuarios()
-}
-
-function salir(){
-    alert("MUCHAS GRACIAS")
 }
