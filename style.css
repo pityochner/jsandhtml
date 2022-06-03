@@ -6,10 +6,17 @@
 body{
     background-color: black;
 }
-h1, p, ul, .nombre{
+h1, ul, .nombre{
     color: white;
     margin-top: 0.5rem;
 }
+
+p{
+    color: white;
+    margin-top: 0.5rem;
+    font-size: 2rem;
+}
+
 button{
     background-color: red;
     color: white;
@@ -22,7 +29,7 @@ button{
 
 }
 
-.button2{
+/* .button2{
     background-color: green;
     text-align: center;
     color: white;
@@ -31,4 +38,35 @@ button{
     margin-top: 1rem;
     margin-left: 1%;    
     border-radius: 0.5rem;
+} */
+
+
+#btnSuma, #btnResta, #btnMultiplica, #btnDivide{
+        background-color: green;
+    text-align: center;
+    color: white;
+    width: 7rem;
+    height: 2rem;
+    margin-top: 1rem;
+    margin-left: 1%;    
+    border-radius: 0.5rem;
+}
+
+#button3{
+    background-color: blue;
+    text-align: center;
+    color: white;
+    width: 6rem;
+    height: 1.5rem;
+    margin-top: 1rem;
+    margin-left: 1%;    
+    border-radius: 0.5rem;
+}
+
+#inputCalcu, #inputCalcu2{
+    background-color: rgb(112, 0, 73);
+    color: white;
+    width: 5rem;
+    height: 1.5rem;
+    margin-left: 2rem;
 }

@@ -3,78 +3,266 @@ let calculador = document.getElementById("calculador")
 let listado = document.getElementById("listado")
 
 
-calculador.addEventListener("click", () => {
-    calculadora()
-})
 listado.addEventListener("click", () => {
     mostrarMenu()
+})
+
+calculador.addEventListener("click", () => {
+    calculadora()
 })
 
 
 //calculadora
 function calculadora()
 {
-    const suma = document.createElement("button")
-    document.body.appendChild(suma)
-    suma.innerHTML="SUMAR"
-    suma.classList.add("button2");
-    suma.addEventListener("click", () => {
-        sumar()
-    })
+    btnSuma()
+    btnResta()
+    btnMultiplica()
+    btnDivide()
 
-    const resta = document.createElement("button")
-    document.body.appendChild(resta)
-    resta.innerHTML="RESTAR"
-    resta.classList.add("button2");
-    resta.addEventListener("click", () => {
-        restar()
-    })
 
-    const multiplica = document.createElement("button")
-    document.body.appendChild(multiplica)
-    multiplica.innerHTML="MULTIPLICAR"
-    multiplica.classList.add("button2");
-    multiplica.addEventListener("click", () => {
-        multiplicar()
-    })
+    // Boton SUMA
+    function btnSuma()
+    {
+        let suma = document.getElementById("btnSuma");
+        if (!suma) 
+        {
+            suma = document.createElement("button");
+        }
+        suma.innerHTML = "";
+        document.body.appendChild(suma);
+        suma.innerHTML = "SUMAR";
+        suma.setAttribute("id", "btnSuma");
+        suma.addEventListener("click", () => {
+            sumar();
+        });
+        
+    }
 
-    const divide = document.createElement("button")
-    document.body.appendChild(divide)
-    divide.innerHTML="DIVIDIR"
-    divide.classList.add("button2");
-    divide.addEventListener("click", () => {
-        dividir()
-    })
+    //Boton RESTA
+    function btnResta()
+    {
+        let resta = document.getElementById("btnResta");
+        if (!resta) 
+        {
+            resta = document.createElement("button");
+        }
+        resta.innerHTML=""
+        document.body.appendChild(resta)
+        resta.innerHTML="RESTAR"
+        resta.setAttribute("id", "btnResta");
+        resta.addEventListener("click", () => {
+            restar()
+        })
+    }
 
+    //Boton MULTIPLICACÍON
+    function btnMultiplica()
+    {
+        let multiplica = document.getElementById("btnMultiplica");
+        if (!multiplica) 
+        {
+            multiplica = document.createElement("button");
+        }
+        multiplica.innerHTML=""
+        document.body.appendChild(multiplica)
+        multiplica.innerHTML="MULTIPLICAR"
+        multiplica.setAttribute("id", "btnMultiplica");
+        multiplica.addEventListener("click", () => {
+            multiplicar()
+        })
+    }
+    
+    //Boton DIVISIÓN
+    function btnDivide()
+    {
+        let divide = document.getElementById("btnDivide");
+        if (!divide) 
+        {
+            divide = document.createElement("button");
+        }
+        divide.innerHTML=""
+        document.body.appendChild(divide)
+        divide.innerHTML="DIVIDIR"
+        divide.setAttribute("id", "btnDivide");
+        divide.addEventListener("click", () => {
+            dividir()
+        })
+    }
+
+    //Función SUMAR
     function sumar()
     {
-        alert("Usted va a elegir dos números para sumar")
-        let numero1 = Number(prompt("Escoja su primer número para sumar"))
-        let numero2 = Number(prompt("Escoja su segundo número para sumar"))
-        alert(numero1+numero2)
+        let numero1 = document.getElementById("inputCalcu");
+        if (!numero1) 
+        {
+            numero1 = document.createElement("input");
+        }
+        numero1.innerHTML = "";
+        document.body.appendChild(numero1)
+        numero1.setAttribute("id", "inputCalcu")
+
+        let numero2 = document.getElementById("inputCalcu2");
+        if (!numero2) 
+        {
+            numero2 = document.createElement("input");
+        }
+        numero2.innerHTML = "";
+        document.body.appendChild(numero2)
+        numero2.setAttribute("id", "inputCalcu2")
+
+        let btnSuma2 = document.getElementById("button3");
+        if (!btnSuma2) 
+        {
+            btnSuma2 = document.createElement("button");
+        }
+        btnSuma2.innerHTML=""
+        document.body.appendChild(btnSuma2)
+        btnSuma2.innerHTML="Sumar"
+        btnSuma2.setAttribute("id", "button3");
+        btnSuma2.addEventListener("click", () => {
+            resultado()
+        })
+
+        function resultado()
+        {
+            const resultado = Number(numero1.value) + Number(numero2.value)
+            const mostResultado = document.createElement("p")
+            document.body.appendChild(mostResultado)
+            mostResultado.innerHTML = `El resultado de su suma es ${resultado}`
+        }
     }
+
+    //Funcion RESTAR
     function restar()
     {
-        alert("Usted va a elegir dos números para restar")
-        let numero1 = Number(prompt("Escoja su primer número para restar"))
-        let numero2 = Number(prompt("Escoja su segundo número para restar"))
-        alert(numero1-numero2)
+        let numero1 = document.getElementById("inputCalcu");
+        if (!numero1) 
+        {
+            numero1 = document.createElement("input");
+        }
+        numero1.innerHTML = "";
+        document.body.appendChild(numero1)
+        numero1.setAttribute("id", "inputCalcu")
+        
+        let numero2 = document.getElementById("inputCalcu2");
+        if (!numero2) 
+        {
+            numero2 = document.createElement("input");
+        }
+        numero2.innerHTML = "";
+        document.body.appendChild(numero2)
+        numero2.setAttribute("id", "inputCalcu2")
+
+        let btnSuma2 = document.getElementById("button3");
+        if (!btnSuma2) 
+        {
+            btnSuma2 = document.createElement("button");
+        }
+        btnSuma2.innerHTML=""
+        document.body.appendChild(btnSuma2)
+        btnSuma2.innerHTML="Restar"
+        btnSuma2.setAttribute("id", "button3");
+        btnSuma2.addEventListener("click", () => {
+            resultado()
+        })
+
+        function resultado()
+        {
+            const resultado = Number(numero1.value) - Number(numero2.value)
+            const mostResultado = document.createElement("p")
+            document.body.appendChild(mostResultado)
+            mostResultado.innerHTML = `El resultado de su resta es ${resultado}`
+        }
     }
+
+    //Función MULTIPLICAR
     function multiplicar()
     {
-        alert("Usted va a elegir dos números para multiplicar")
-        let numero1 = Number(prompt("Escoja su primer número para multiplicar"))
-        let numero2 = Number(prompt("Escoja su segundo número para multiplicar"))
-        alert(numero1*numero2)
+        let numero1 = document.getElementById("inputCalcu");
+        if (!numero1) 
+        {
+            numero1 = document.createElement("input");
+        }
+        numero1.innerHTML = "";
+        document.body.appendChild(numero1)
+        numero1.setAttribute("id", "inputCalcu")
+        
+        let numero2 = document.getElementById("inputCalcu2");
+        if (!numero2) 
+        {
+            numero2 = document.createElement("input");
+        }
+        numero2.innerHTML = "";
+        document.body.appendChild(numero2)
+        numero2.setAttribute("id", "inputCalcu2")
+
+        let btnSuma2 = document.getElementById("button3");
+        if (!btnSuma2) 
+        {
+            btnSuma2 = document.createElement("button");
+        }
+        btnSuma2.innerHTML=""
+        document.body.appendChild(btnSuma2)
+        btnSuma2.innerHTML="Multiplicar"
+        btnSuma2.setAttribute("id", "button3");
+        btnSuma2.addEventListener("click", () => {
+            resultado()
+        })
+
+        function resultado()
+        {
+            const resultado = Number(numero1.value) * Number(numero2.value)
+            const mostResultado = document.createElement("p")
+            document.body.appendChild(mostResultado)
+            mostResultado.innerHTML = `El resultado de su multiplicación es ${resultado}`
+        }
     }
+    
+    //Función DIVIDIR
     function dividir()
     {
-        alert("Usted va a elegir dos números para dividir")
-        let numero1 = Number(prompt("Escoja su primer número para dividir"))
-        let numero2 = Number(prompt("Escoja su segundo número para dividir"))
-        alert(numero1/numero2)
+        let numero1 = document.getElementById("inputCalcu");
+        if (!numero1) 
+        {
+            numero1 = document.createElement("input");
+        }
+        numero1.innerHTML = "";
+        document.body.appendChild(numero1)
+        numero1.setAttribute("id", "inputCalcu")
+        
+        let numero2 = document.getElementById("inputCalcu2");
+        if (!numero2) 
+        {
+            numero2 = document.createElement("input");
+        }
+        numero2.innerHTML = "";
+        document.body.appendChild(numero2)
+        numero2.setAttribute("id", "inputCalcu2")
+
+        let btnSuma2 = document.getElementById("button3");
+        if (!btnSuma2) 
+        {
+            btnSuma2 = document.createElement("button");
+        }
+        btnSuma2.innerHTML=""
+        document.body.appendChild(btnSuma2)
+        btnSuma2.innerHTML="Dividir"
+        btnSuma2.setAttribute("id", "button3");
+        btnSuma2.addEventListener("click", () => {
+            resultado()
+        })
+
+        function resultado()
+        {
+            const resultado = Number(numero1.value) / Number(numero2.value)
+            const mostResultado = document.createElement("p")
+            document.body.appendChild(mostResultado)
+            mostResultado.innerHTML = `El resultado de su división es ${resultado}`
+        }
     }
 }
+
 
 //listado de usuarios
 class Usuario{
@@ -88,15 +276,18 @@ class Usuario{
     }
 }
 
+
 const usuario1 = new Usuario(1, "Nehuen", "Gutierrez", 22, "CABA");
 const usuario2 = new Usuario(2, "Fiona", "Gancedo", 25, "Corrientes");
 const usuario3 = new Usuario(3, "Morena", "Nuñez", 21, "CABA");
 const usuario4 = new Usuario(4, "Aldana", "Morales", 28, "Mendoza");
 const usuario5 = new Usuario(5, "Alfonsina", "Diaz", 0, "CABA");
-const usuario6 = new Usuario(6, "Pietro", "Ochner", 24, "CABA");
+const usuario6 = new Usuario(6, "Pietro", "Ochner", 21, "CABA");
+
 
 const usuarios = [usuario1,usuario2,usuario3, usuario4, usuario5, usuario6];
 console.log("INICIAL:", usuarios);
+
 
 function mostrarMenu()
 {
@@ -133,6 +324,7 @@ function mostrarMenu()
     });
 }
 
+
 //agregar usuario
 function agregarUsuario()
 {      
@@ -151,6 +343,7 @@ function agregarUsuario()
     usuarios.push(usuario);
     listarUsuarios()
 }
+
 
 //listar usuarios
 function listarUsuarios()
@@ -172,6 +365,7 @@ function listarUsuarios()
 
    document.body.appendChild(miLista);
 }
+
 
 //eliminar usuario
 function eliminarUsuario(){
@@ -195,6 +389,7 @@ function eliminarUsuario(){
   }
   listarUsuarios()
 }
+
 
 //modificar usuario
 function modificarUsuario()
