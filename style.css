@@ -6,7 +6,7 @@
 body{
     background-color: black;
 }
-h1, ul, .nombre{
+h1, h3, ul, .nombre, label{
     color: white;
     margin-top: 0.5rem;
 }
@@ -14,7 +14,7 @@ h1, ul, .nombre{
 p{
     color: white;
     margin-top: 0.5rem;
-    font-size: 2rem;
+    font-size: 1rem;
 }
 
 button{
@@ -29,34 +29,22 @@ button{
 
 }
 
-/* .button2{
+#btnSuma, #btnResta, #btnMultiplica, #btnDivide, #btnAgreUsuario, #btnElimUsuario, #btnModiUsuario, #btnListUsuario{
     background-color: green;
     text-align: center;
     color: white;
-    width: 7rem;
+    width: 8rem;
     height: 2rem;
     margin-top: 1rem;
-    margin-left: 1%;    
-    border-radius: 0.5rem;
-} */
-
-
-#btnSuma, #btnResta, #btnMultiplica, #btnDivide{
-        background-color: green;
-    text-align: center;
-    color: white;
-    width: 7rem;
-    height: 2rem;
-    margin-top: 1rem;
-    margin-left: 1%;    
+    margin-left: 0.5%;    
     border-radius: 0.5rem;
 }
 
-#button3{
+#button1, #button2, #button3{
     background-color: blue;
     text-align: center;
     color: white;
-    width: 6rem;
+    width: 9rem;
     height: 1.5rem;
     margin-top: 1rem;
     margin-left: 1%;    
@@ -64,9 +52,25 @@ button{
 }
 
 #inputCalcu, #inputCalcu2{
-    background-color: rgb(112, 0, 73);
+    background-color: #700049;
     color: white;
+    border-radius: 1rem;
     width: 5rem;
     height: 1.5rem;
     margin-left: 2rem;
+    margin-top: 0.5rem;
+}
+
+#inputUsuarios1, #inputUsuarios2, #inputUsuarios3, #inputUsuarios4, #inputUsuarios5{
+    background-color: #700049;
+    color: white;
+    border-radius: 1rem;
+    width: 8rem;
+    height: 1.5rem;
+    margin-right: 1rem;
+    margin-top: 0.5rem;
+}
+
+label {
+    margin-right: 0.2rem;
 }
